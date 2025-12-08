@@ -2,8 +2,7 @@ package GusFigue.example.STUK_WEB.Controller;
 
 import GusFigue.example.STUK_WEB.Model.ProdutoModel;
 import GusFigue.example.STUK_WEB.DTO.ProdutoDTO;
-import GusFigue.example.STUK_WEB.Service.Produto.ProdutoService;
-import jakarta.persistence.Id;
+import GusFigue.example.STUK_WEB.Service.ProdutoService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +28,7 @@ public class ProdutoController {
 
     @GetMapping
     public ResponseEntity<Optional<ProdutoModel>> buscarProdutoPorId(@RequestParam Long Id) {
-        Optional<ProdutoModel> produto = service.buscarProdutoPorId(Id);
+        Optional<ProdutoModel> produto = Optional.ofNullable(service.buscarProdutoPorId(Id));
         return ResponseEntity.ok(produto);
     }
 

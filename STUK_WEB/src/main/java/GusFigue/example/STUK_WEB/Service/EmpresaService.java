@@ -23,7 +23,7 @@ public class EmpresaService {
             throw new IllegalArgumentException("Por favor informe a descrição da empresa.");
         }
 
-        if (dto.Estado() == null || dto.Estado().isBlank()) {
+        if (dto.Estado() == null) {
             throw new IllegalArgumentException("Por favor informe um estado.");
         }
 
@@ -39,7 +39,7 @@ public class EmpresaService {
             throw new IllegalArgumentException("Por favor informe um numero.");
         }
 
-        if (dto.Tipo() == null || dto.Tipo().isBlank()) {
+        if (dto.Tipo() == null) {
             throw new IllegalArgumentException("Por favor informe um tipo de empresa.");
         }
 

@@ -16,8 +16,4 @@ public enum TipoEmpresaEnum {
     public String getTipos() {
         return Tipos;
     }
-
-    public boolean isBlank() {
-        return true;
-    }
 }

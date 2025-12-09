@@ -40,7 +40,4 @@ public enum UFEnum {
         return Estados;
     }
 
-    public boolean isBlank() {
-        return true;
-    }
 }

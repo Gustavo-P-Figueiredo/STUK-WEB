@@ -28,10 +28,6 @@ public class ProdutoService {
             }
 
             ProdutoModel produto = new ProdutoModel(
-                    null,
-                    dto.Descricao(),
-                    dto.Valor(),
-                    dto.Quant_CD()
             );
 
             ProdutoModel salvo = repository.save(produto);

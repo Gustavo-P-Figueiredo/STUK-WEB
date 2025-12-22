@@ -2,6 +2,8 @@ package GusFigue.example.STUK_WEB.Model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.*;
 
 @Getter
@@ -17,17 +19,21 @@ public class ProdutoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    public Long Id;
 
     @NotBlank(message = "Por favor informe uma descrição")
     @Column(name = "Descricao", nullable = false)
-    private String Descricao;
+    public String Descricao;
 
-    @NotBlank(message = "Por favor informe um valor para o produto")
+    @NotNull(message = "Por favor informe o valor.")
+    @Positive(message = "O valor deve ser maior que zero.")
     @Column(name = "Valor", nullable = false)
-    private double Valor;
+    public double Valor;
 
     @Column(name = "Quant_CD")
-    private int Quant_CD;
+    public int Quant_CD;
 
+    @ManyToOne
+    @JoinColumn(name = "fornecedor_id")
+    public FornecedorModel fornecedor;
 }

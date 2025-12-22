@@ -1,5 +1,6 @@
 package GusFigue.example.STUK_WEB.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -35,5 +36,6 @@ public class ProdutoModel {
 
     @ManyToOne
     @JoinColumn(name = "fornecedor_id")
+    @JsonBackReference
     public FornecedorModel fornecedor;
 }

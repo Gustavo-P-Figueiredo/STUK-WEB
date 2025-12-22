@@ -21,8 +21,8 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<ProdutoDTO> salvarProduto(@RequestBody @Valid ProdutoDTO dto) {
-        ProdutoDTO produto = service.salvarProduto(dto);
+    public ResponseEntity<ProdutoDTO> salvarProduto(@RequestBody @Valid ProdutoDTO dto, Object Fornecedor_Id) {
+        ProdutoDTO produto = service.salvarProduto(dto, Fornecedor_Id);
         return ResponseEntity.status(HttpStatus.CREATED).body(produto);
     }
 

@@ -2,10 +2,13 @@ package GusFigue.example.STUK_WEB.Service;
 
 import GusFigue.example.STUK_WEB.DTO.FornecedorDTO;
 import GusFigue.example.STUK_WEB.Model.FornecedorModel;
+import GusFigue.example.STUK_WEB.Model.ProdutoModel;
 import GusFigue.example.STUK_WEB.Repository.FornecedorRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -21,25 +24,31 @@ public class FornecedorService {
 
     public FornecedorDTO salvarFornecedor(FornecedorDTO dto) {
         if (dto.Nome() == null || dto.Nome().isBlank()) {
-            throw new IllegalArgumentException("Por favor informe o nome do cliente.");
+            throw new IllegalArgumentException("Por favor informe o nome do fornecedor.");
         }
 
         if (dto.CNPJ() == null || dto.CNPJ().isBlank()) {
-            throw new IllegalArgumentException("Por favor informe o CNPJ do cliente.");
+            throw new IllegalArgumentException("Por favor informe o CNPJ do fornecedor.");
         }
 
         FornecedorModel fornecedor = new FornecedorModel(
                 null,
                 dto.Nome(),
-                dto.CNPJ()
+                dto.CNPJ(),
+                produtoList()
         );
 
         FornecedorModel salvo = repository.save(fornecedor);
 
         return new FornecedorDTO(
                 salvo.getNome(),
-                salvo.getCNPJ()
+                salvo.getCNPJ(),
+                salvo.getProdutoList()
         );
+    }
+
+    private List<ProdutoModel> produtoList() {
+        return null;
     }
 
     public FornecedorModel buscarFornecedorPorId(Long Id) {
@@ -64,7 +73,8 @@ public class FornecedorService {
 
         return new FornecedorDTO(
                 salvo.getNome(),
-                salvo.getCNPJ()
+                salvo.getCNPJ(),
+                salvo.getProdutoList()
         );
     }
 

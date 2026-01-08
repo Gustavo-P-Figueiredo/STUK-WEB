@@ -1,6 +1,5 @@
 package GusFigue.example.STUK_WEB.Model;
 
-import GusFigue.example.STUK_WEB.Infrastructure.TipoEmpresaEnum;
 import GusFigue.example.STUK_WEB.Infrastructure.UFEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -14,18 +13,15 @@ import lombok.*;
 @EqualsAndHashCode(of = "Id")
 
 
-@Table(name = "EmpresaTable")
-@Entity(name = "Empresa")
-public class EmpresaModel {
+@Table(name = "EnderecoTable")
+@Entity(name = "Endereco")
+public class EnderecoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @NotBlank(message = "Por favor informe uma descrição")
-    @Column(name = "Descricao", nullable = false)
-    private String Descricao;
-
-    @NotNull(message = "Por favor informe o estado")
+    @NotNull(message = "Por favor informe uma estado")
+    @Enumerated(EnumType.STRING)
     @Column(name = "Estado", nullable = false)
     private UFEnum Estado;
 
@@ -43,9 +39,5 @@ public class EmpresaModel {
 
     @Column(name = "Complemento")
     private String Complemento;
-
-    @NotNull(message = "Por favor informe o tipo da empresa")
-    @Column(name = "Tipo", nullable = false)
-    private TipoEmpresaEnum Tipo;
 
 }

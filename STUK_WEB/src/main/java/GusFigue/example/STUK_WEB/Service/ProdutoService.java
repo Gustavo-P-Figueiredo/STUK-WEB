@@ -69,13 +69,13 @@ public class ProdutoService {
 
     public void deletarProdutoPorId(Long Id) {
         repository.findById(Id)
-        .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
         repository.deleteById(Id);
     }
 
     public ProdutoDTO atualizarProdutoPorId(Long Id, ProdutoDTO dto) {
         ProdutoModel produto = repository.findById(Id)
-            .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
 
         produto.setDescricao(dto.Descricao());
         produto.setValor(dto.Valor());

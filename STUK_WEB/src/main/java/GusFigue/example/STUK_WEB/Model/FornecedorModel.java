@@ -16,7 +16,7 @@ import java.util.List;
 
 @Table(name = "FornecedorTable")
 @Entity(name = "Fornecedor")
-    public class FornecedorModel {
+public class FornecedorModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

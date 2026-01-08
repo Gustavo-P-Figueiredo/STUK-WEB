@@ -39,5 +39,4 @@ public enum UFEnum {
     public String getEstados() {
         return Estados;
     }
-
 }

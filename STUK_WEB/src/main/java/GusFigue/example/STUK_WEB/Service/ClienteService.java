@@ -23,9 +23,6 @@ public class ClienteService {
 
     public ClienteDTO salvarCliente(ClienteDTO dto) {
 
-        // ===============================
-        // Validações do Cliente
-        // ===============================
         if (dto.Nome() == null || dto.Nome().isBlank()) {
             throw new IllegalArgumentException("Por favor informe o nome do cliente.");
         }
@@ -38,9 +35,6 @@ public class ClienteService {
             throw new IllegalArgumentException("Por favor informe o telefone de contato.");
         }
 
-        // ===============================
-        // Validações do Endereço
-        // ===============================
         EnderecoDTO e = dto.Endereco();
 
         if (e == null) {
@@ -63,19 +57,13 @@ public class ClienteService {
             throw new IllegalArgumentException("Por favor informe um número.");
         }
 
-        // ===============================
-        // Montagem do EnderecoModel
-        // ===============================
         EnderecoModel endereco = new EnderecoModel();
-        endereco.setEstado(e.getEstado());      // ✅ UFEnum direto
+        endereco.setEstado(e.getEstado());      
         endereco.setCidade(e.getCidade());
         endereco.setRua(e.getRua());
         endereco.setNumero(e.getNumero());
         endereco.setComplemento(e.getComplemento());
 
-        // ===============================
-        // Montagem do ClienteModel
-        // ===============================
         ClienteModel cliente = new ClienteModel();
         cliente.setNome(dto.Nome());
         cliente.setCPF(dto.CPF());
@@ -84,9 +72,6 @@ public class ClienteService {
 
         ClienteModel salvo = repository.save(cliente);
 
-        // ===============================
-        // Retorno DTO
-        // ===============================
         return new ClienteDTO(
                 salvo.getNome(),
                 salvo.getCPF(),
@@ -115,15 +100,9 @@ public class ClienteService {
 
     public ClienteDTO atualizarClientePorId(Long id, ClienteDTO dto) {
 
-        // ===============================
-        // Busca do cliente
-        // ===============================
         ClienteModel cliente = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
 
-        // ===============================
-        // Validações básicas
-        // ===============================
         if (dto.Nome() == null || dto.Nome().isBlank()) {
             throw new IllegalArgumentException("Por favor informe o nome do cliente.");
         }
@@ -140,16 +119,10 @@ public class ClienteService {
             throw new IllegalArgumentException("Por favor informe o endereço.");
         }
 
-        // ===============================
-        // Atualização do Cliente
-        // ===============================
         cliente.setNome(dto.Nome());
         cliente.setCPF(dto.CPF());
         cliente.setTelefone(dto.Telefone());
 
-        // ===============================
-        // Atualização do Endereço
-        // ===============================
         EnderecoDTO e = dto.Endereco();
         EnderecoModel endereco = cliente.getEndereco();
 
@@ -165,14 +138,8 @@ public class ClienteService {
 
         cliente.setEndereco(endereco);
 
-        // ===============================
-        // Persistência
-        // ===============================
         ClienteModel salvo = repository.save(cliente);
 
-        // ===============================
-        // Retorno DTO
-        // ===============================
         return new ClienteDTO(
                 salvo.getNome(),
                 salvo.getCPF(),

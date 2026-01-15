@@ -25,27 +25,11 @@ public class EmpresaModel {
     @Column(name = "Descricao", nullable = false)
     private String Descricao;
 
-    @NotNull(message = "Por favor informe o estado")
-    @Column(name = "Estado", nullable = false)
-    private UFEnum Estado;
-
-    @NotBlank(message = "Por favor informe uma cidade")
-    @Column(name = "Cidade", nullable = false)
-    private String Cidade;
-
-    @NotBlank(message = "Por favor informe uma rua")
-    @Column(name = "Rua", nullable = false)
-    private String Rua;
-
-    @NotBlank(message = "Por favor informe um numero")
-    @Column(name = "Numero", nullable = false)
-    private String Numero;
-
-    @Column(name = "Complemento")
-    private String Complemento;
-
     @NotNull(message = "Por favor informe o tipo da empresa")
     @Column(name = "Tipo", nullable = false)
     private TipoEmpresaEnum Tipo;
 
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "Endereco_id", nullable = false)
+    private EnderecoModel endereco;
 }

@@ -58,7 +58,7 @@ public class ClienteService {
         }
 
         EnderecoModel endereco = new EnderecoModel();
-        endereco.setEstado(e.getEstado());      
+        endereco.setEstado(e.getEstado());
         endereco.setCidade(e.getCidade());
         endereco.setRua(e.getRua());
         endereco.setNumero(e.getNumero());
@@ -85,7 +85,6 @@ public class ClienteService {
                 salvo.getTelefone()
         );
     }
-
 
     public ClienteModel buscarClientePorId(Long Id) {
         return repository.findById(Id)

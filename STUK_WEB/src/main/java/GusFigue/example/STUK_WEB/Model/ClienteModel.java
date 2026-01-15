@@ -1,6 +1,5 @@
 package GusFigue.example.STUK_WEB.Model;
 
-import GusFigue.example.STUK_WEB.Infrastructure.UFEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
